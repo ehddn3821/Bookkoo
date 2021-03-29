@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,6 +14,10 @@
 		35240F442610518100348CA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35240F432610518100348CA9 /* Assets.xcassets */; };
 		35240F472610518100348CA9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35240F452610518100348CA9 /* LaunchScreen.storyboard */; };
 		35240F532610606D00348CA9 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35240F522610606D00348CA9 /* SearchViewController.swift */; };
+		35240F5826106A7200348CA9 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 35240F5726106A7200348CA9 /* Alamofire */; };
+		35240F5C26106AA000348CA9 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 35240F5B26106AA000348CA9 /* SwiftyJSON */; };
+		35240F6026106B8100348CA9 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 35240F5F26106B8100348CA9 /* Toast */; };
+		35240F6326106BB700348CA9 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35240F6226106BB700348CA9 /* APIKey.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +30,7 @@
 		35240F462610518100348CA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		35240F482610518100348CA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		35240F522610606D00348CA9 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		35240F6226106BB700348CA9 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +38,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35240F6026106B8100348CA9 /* Toast in Frameworks */,
+				35240F5C26106AA000348CA9 /* SwiftyJSON in Frameworks */,
+				35240F5826106A7200348CA9 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,6 +74,7 @@
 				35240F432610518100348CA9 /* Assets.xcassets */,
 				35240F452610518100348CA9 /* LaunchScreen.storyboard */,
 				35240F482610518100348CA9 /* Info.plist */,
+				35240F6226106BB700348CA9 /* APIKey.swift */,
 			);
 			path = Bookkoo;
 			sourceTree = "<group>";
@@ -86,6 +95,11 @@
 			dependencies = (
 			);
 			name = Bookkoo;
+			packageProductDependencies = (
+				35240F5726106A7200348CA9 /* Alamofire */,
+				35240F5B26106AA000348CA9 /* SwiftyJSON */,
+				35240F5F26106B8100348CA9 /* Toast */,
+			);
 			productName = Bookkoo;
 			productReference = 35240F372610518000348CA9 /* Bookkoo.app */;
 			productType = "com.apple.product-type.application";
@@ -113,6 +127,11 @@
 				Base,
 			);
 			mainGroup = 35240F2E2610518000348CA9;
+			packageReferences = (
+				35240F5626106A7200348CA9 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				35240F5A26106AA000348CA9 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+				35240F5E26106B8100348CA9 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
+			);
 			productRefGroup = 35240F382610518000348CA9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -144,6 +163,7 @@
 				35240F3B2610518000348CA9 /* AppDelegate.swift in Sources */,
 				35240F532610606D00348CA9 /* SearchViewController.swift in Sources */,
 				35240F3D2610518000348CA9 /* SceneDelegate.swift in Sources */,
+				35240F6326106BB700348CA9 /* APIKey.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,6 +367,51 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		35240F5626106A7200348CA9 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.4.1;
+			};
+		};
+		35240F5A26106AA000348CA9 /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.1;
+			};
+		};
+		35240F5E26106B8100348CA9 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scalessec/Toast-Swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		35240F5726106A7200348CA9 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 35240F5626106A7200348CA9 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		35240F5B26106AA000348CA9 /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 35240F5A26106AA000348CA9 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
+		};
+		35240F5F26106B8100348CA9 /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 35240F5E26106B8100348CA9 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
+			productName = Toast;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 35240F2F2610518000348CA9 /* Project object */;
 }
