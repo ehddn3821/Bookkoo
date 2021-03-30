@@ -21,11 +21,18 @@ class SearchViewController: UIViewController {
         super.viewDidLoad()
         
         bookSearchBar.delegate = self
-
-//        searchTableView.delegate = self
-//        searchTableView.dataSource = self
+        searchTableView.delegate = self
+        searchTableView.dataSource = self
+        
+        let nibName = UINib(nibName: "SearchTableViewCell", bundle: nil)
+        searchTableView.register(nibName, forCellReuseIdentifier: "SearchTableViewCell")
+        
+        // 테이블뷰셀에 컨텐츠 내용에 따라 동적 높이 할당
+        searchTableView.estimatedRowHeight = 140
+        searchTableView.rowHeight = UITableView.automaticDimension
     }
     
+    // MARK: - API 호출
     func CallAPI() {
         let headers: HTTPHeaders = [
             "Authorization": APIKey.apiKey
@@ -47,7 +54,9 @@ class SearchViewController: UIViewController {
                         // Data를 [Item] 타입으로 디코딩 후 bookArray에 변환한 값을 대입
                         let json = try JSONDecoder().decode(APIResponse.self, from: jsonData)
                         self.bookArray = json.documents
-                        print(self.bookArray)
+                        
+                        // 테이블뷰 리로드
+                        self.searchTableView.reloadData()
                         
                     } catch (let err) {
                         print(err.localizedDescription)
@@ -90,13 +99,17 @@ extension SearchViewController: UISearchBarDelegate {
 }
 
 // MARK: - UITableViewDelegate, DataSource
-//extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
-//
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return bookArray.count
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        <#code#>
-//    }
-//}
+extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return bookArray.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SearchTableViewCell", for: indexPath) as! SearchTableViewCell
+        
+        cell.bookTitle.text = bookArray[indexPath.row].title
+        
+        return cell
+    }
+}

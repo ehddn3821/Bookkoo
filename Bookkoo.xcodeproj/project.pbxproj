@@ -18,6 +18,8 @@
 		35240F5C26106AA000348CA9 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 35240F5B26106AA000348CA9 /* SwiftyJSON */; };
 		35240F6026106B8100348CA9 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 35240F5F26106B8100348CA9 /* Toast */; };
 		35240F6326106BB700348CA9 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35240F6226106BB700348CA9 /* APIKey.swift */; };
+		35AADA0E26131481009C9B9B /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AADA0C26131481009C9B9B /* SearchTableViewCell.swift */; };
+		35AADA0F26131481009C9B9B /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35AADA0D26131481009C9B9B /* SearchTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +33,8 @@
 		35240F482610518100348CA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		35240F522610606D00348CA9 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		35240F6226106BB700348CA9 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
+		35AADA0C26131481009C9B9B /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
+		35AADA0D26131481009C9B9B /* SearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +79,8 @@
 				35240F452610518100348CA9 /* LaunchScreen.storyboard */,
 				35240F482610518100348CA9 /* Info.plist */,
 				35240F6226106BB700348CA9 /* APIKey.swift */,
+				35AADA0C26131481009C9B9B /* SearchTableViewCell.swift */,
+				35AADA0D26131481009C9B9B /* SearchTableViewCell.xib */,
 			);
 			path = Bookkoo;
 			sourceTree = "<group>";
@@ -147,6 +153,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				35240F472610518100348CA9 /* LaunchScreen.storyboard in Resources */,
+				35AADA0F26131481009C9B9B /* SearchTableViewCell.xib in Resources */,
 				35240F442610518100348CA9 /* Assets.xcassets in Resources */,
 				35240F422610518000348CA9 /* Main.storyboard in Resources */,
 			);
@@ -162,6 +169,7 @@
 				35240F3F2610518000348CA9 /* ArchiveViewController.swift in Sources */,
 				35240F3B2610518000348CA9 /* AppDelegate.swift in Sources */,
 				35240F532610606D00348CA9 /* SearchViewController.swift in Sources */,
+				35AADA0E26131481009C9B9B /* SearchTableViewCell.swift in Sources */,
 				35240F3D2610518000348CA9 /* SceneDelegate.swift in Sources */,
 				35240F6326106BB700348CA9 /* APIKey.swift in Sources */,
 			);
