@@ -16,7 +16,6 @@
 		35240F532610606D00348CA9 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35240F522610606D00348CA9 /* SearchViewController.swift */; };
 		35240F5826106A7200348CA9 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 35240F5726106A7200348CA9 /* Alamofire */; };
 		35240F5C26106AA000348CA9 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 35240F5B26106AA000348CA9 /* SwiftyJSON */; };
-		35240F6026106B8100348CA9 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 35240F5F26106B8100348CA9 /* Toast */; };
 		35240F6326106BB700348CA9 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35240F6226106BB700348CA9 /* APIKey.swift */; };
 		35AADA0E26131481009C9B9B /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AADA0C26131481009C9B9B /* SearchTableViewCell.swift */; };
 		35AADA0F26131481009C9B9B /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35AADA0D26131481009C9B9B /* SearchTableViewCell.xib */; };
@@ -42,7 +41,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				35240F6026106B8100348CA9 /* Toast in Frameworks */,
 				35240F5C26106AA000348CA9 /* SwiftyJSON in Frameworks */,
 				35240F5826106A7200348CA9 /* Alamofire in Frameworks */,
 			);
@@ -104,7 +102,6 @@
 			packageProductDependencies = (
 				35240F5726106A7200348CA9 /* Alamofire */,
 				35240F5B26106AA000348CA9 /* SwiftyJSON */,
-				35240F5F26106B8100348CA9 /* Toast */,
 			);
 			productName = Bookkoo;
 			productReference = 35240F372610518000348CA9 /* Bookkoo.app */;
@@ -136,7 +133,6 @@
 			packageReferences = (
 				35240F5626106A7200348CA9 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				35240F5A26106AA000348CA9 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
-				35240F5E26106B8100348CA9 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 			);
 			productRefGroup = 35240F382610518000348CA9 /* Products */;
 			projectDirPath = "";
@@ -393,14 +389,6 @@
 				minimumVersion = 5.0.1;
 			};
 		};
-		35240F5E26106B8100348CA9 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/scalessec/Toast-Swift.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.1;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -413,11 +401,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 35240F5A26106AA000348CA9 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
 			productName = SwiftyJSON;
-		};
-		35240F5F26106B8100348CA9 /* Toast */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 35240F5E26106B8100348CA9 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
-			productName = Toast;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -18,12 +18,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="책 제목이나 저자를 검색해주세요." translatesAutoresizingMaskIntoConstraints="NO" id="QoL-Iu-dUR">
-                                <rect key="frame" x="0.0" y="44" width="414" height="56"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cR9-AH-m0R">
-                                <rect key="frame" x="0.0" y="100" width="414" height="713"/>
+                                <rect key="frame" x="0.0" y="140" width="414" height="673"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                         </subviews>
@@ -32,22 +28,18 @@
                         <constraints>
                             <constraint firstItem="rOD-3Q-Ldc" firstAttribute="bottom" secondItem="cR9-AH-m0R" secondAttribute="bottom" id="2i5-MM-Kbk"/>
                             <constraint firstItem="cR9-AH-m0R" firstAttribute="leading" secondItem="rOD-3Q-Ldc" secondAttribute="leading" id="Aw6-h4-p4a"/>
-                            <constraint firstItem="cR9-AH-m0R" firstAttribute="top" secondItem="QoL-Iu-dUR" secondAttribute="bottom" id="H2w-TJ-3Gr"/>
-                            <constraint firstItem="QoL-Iu-dUR" firstAttribute="top" secondItem="rOD-3Q-Ldc" secondAttribute="top" id="K8g-OU-0KQ"/>
-                            <constraint firstItem="QoL-Iu-dUR" firstAttribute="trailing" secondItem="rOD-3Q-Ldc" secondAttribute="trailing" id="VAm-oz-5nR"/>
-                            <constraint firstItem="QoL-Iu-dUR" firstAttribute="leading" secondItem="rOD-3Q-Ldc" secondAttribute="leading" id="VlS-4s-Vie"/>
+                            <constraint firstItem="cR9-AH-m0R" firstAttribute="top" secondItem="rOD-3Q-Ldc" secondAttribute="top" id="nI3-S7-s8C"/>
                             <constraint firstItem="rOD-3Q-Ldc" firstAttribute="trailing" secondItem="cR9-AH-m0R" secondAttribute="trailing" id="ysl-0P-07h"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Search" image="magnifyingglass" catalog="system" id="EoC-7s-o3a"/>
+                    <navigationItem key="navigationItem" title="Search" id="rEL-Jt-YCw"/>
                     <connections>
-                        <outlet property="bookSearchBar" destination="QoL-Iu-dUR" id="sRn-et-25V"/>
                         <outlet property="searchTableView" destination="cR9-AH-m0R" id="5sM-Hs-nSU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wHl-CP-1to" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="146" y="810"/>
+            <point key="canvasLocation" x="144.92753623188406" y="1506.6964285714284"/>
         </scene>
         <!--Archive-->
         <scene sceneID="tne-QT-ifu">
@@ -168,7 +160,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kl1-f4-igo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="900" y="810"/>
+            <point key="canvasLocation" x="910" y="810"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="9yB-xn-pwK">
@@ -183,7 +175,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="JWK-Bt-wTO" kind="relationship" relationship="viewControllers" id="hL7-k2-X5H"/>
-                        <segue destination="TDQ-B5-SES" kind="relationship" relationship="viewControllers" id="Hae-hz-B51"/>
+                        <segue destination="lzx-sd-YXe" kind="relationship" relationship="viewControllers" id="Hae-hz-B51"/>
                         <segue destination="4vE-gt-GtT" kind="relationship" relationship="viewControllers" id="8QA-AB-5jM"/>
                     </connections>
                 </tabBarController>
@@ -209,6 +201,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e8P-Zg-OzE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-623.1884057971015" y="809.59821428571422"/>
+        </scene>
+        <!--Search-->
+        <scene sceneID="wfp-gD-Sh0">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lzx-sd-YXe" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Search" image="magnifyingglass" catalog="system" id="EoC-7s-o3a"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="PBQ-Ay-JLF">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="TDQ-B5-SES" kind="relationship" relationship="rootViewController" id="56T-Kl-tZ7"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Edd-2U-EKk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="144.92753623188406" y="809.59821428571422"/>
         </scene>
     </scenes>
     <resources>
