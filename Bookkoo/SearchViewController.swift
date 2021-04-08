@@ -47,7 +47,7 @@ class SearchViewController: UIViewController {
         
         let query = bookSearchBar.text ?? ""
         
-        let url = "https://dapi.kakao.com/v3/search/book?query=\(query)"
+        let url = "https://dapi.kakao.com/v3/search/book?query=\(query)&size=20"
         
         let encodedUrl = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!  // 한글 인코딩
         AF.request(encodedUrl, headers: headers).responseJSON { response in
@@ -110,8 +110,41 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SearchTableViewCell", for: indexPath) as! SearchTableViewCell
         
-        cell.bookTitle.text = bookArray[indexPath.row].title
+        let bookArrayIndex = bookArray[indexPath.row]
+        
+        // 도서 제목
+        cell.bookTitle.text = bookArrayIndex.title
+        
+        // 도서 이미지
+        let url = URL(string: bookArrayIndex.thumbnail)
+        if url != nil {
+            DispatchQueue.global().async {
+                let data = try? Data(contentsOf: url!)
+                DispatchQueue.main.async {
+                    cell.bookImage.image = UIImage(data: data!)
+                }
+            }
+        }
+        
+        // 저자
+        let authors = bookArrayIndex.authors.joined(separator: ", ")
+        cell.bookAuthor.text = authors
+        
+        // 역자
+        let translators = bookArrayIndex.translators?.joined(separator: ", ")
+        if translators != "" {
+            cell.translatorLabel.isHidden = false
+            cell.bookTranslator.isHidden = false
+            cell.bookTranslator.text = translators
+        } else {
+            cell.translatorLabel.isHidden = true
+            cell.bookTranslator.isHidden = true
+        }
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 120
     }
 }
