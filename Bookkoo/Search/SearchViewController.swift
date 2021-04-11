@@ -106,6 +106,10 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return bookArray.count
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 120
+    }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SearchTableViewCell", for: indexPath) as! SearchTableViewCell
@@ -144,7 +148,29 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 120
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        // 선택 해제하기
+        tableView.deselectRow(at: indexPath, animated: false)
+        
+        // 선택한 indexPath.row 넘기기
+        performSegue(withIdentifier: "goDetail", sender: indexPath.row)
+    }
+    
+    // 세그가 작동하기전에 먼저 실행
+    // 선택한 셀 데이터 넘겨주기
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goDetail" {
+            let vc = segue.destination as? DetailViewController
+            if let index = sender as? Int {
+                vc?.imgURL = bookArray[index].thumbnail
+                vc?.bookTitle = bookArray[index].title
+                vc?.bookAuthors = bookArray[index].authors
+                vc?.bookTranslators = bookArray[index].translators
+                vc?.bookPublisher = bookArray[index].publisher
+                vc?.bookDatetime = bookArray[index].datetime
+                vc?.bookContents = bookArray[index].contents
+            }
+        }
     }
 }

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		35123D28262039B900E94919 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35123D27262039B900E94919 /* DetailViewController.swift */; };
+		35123D2D26204E7E00E94919 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 35123D2C26204E7E00E94919 /* SnapKit */; };
 		35240F3B2610518000348CA9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35240F3A2610518000348CA9 /* AppDelegate.swift */; };
 		35240F3D2610518000348CA9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35240F3C2610518000348CA9 /* SceneDelegate.swift */; };
 		35240F3F2610518000348CA9 /* ArchiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35240F3E2610518000348CA9 /* ArchiveViewController.swift */; };
@@ -22,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		35123D27262039B900E94919 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		35240F372610518000348CA9 /* Bookkoo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bookkoo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35240F3A2610518000348CA9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		35240F3C2610518000348CA9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -41,6 +44,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35123D2D26204E7E00E94919 /* SnapKit in Frameworks */,
 				35240F5C26106AA000348CA9 /* SwiftyJSON in Frameworks */,
 				35240F5826106A7200348CA9 /* Alamofire in Frameworks */,
 			);
@@ -49,6 +53,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		35123D262620393F00E94919 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				35240F522610606D00348CA9 /* SearchViewController.swift */,
+				35AADA0C26131481009C9B9B /* SearchTableViewCell.swift */,
+				35AADA0D26131481009C9B9B /* SearchTableViewCell.xib */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
 		35240F2E2610518000348CA9 = {
 			isa = PBXGroup;
 			children = (
@@ -68,17 +82,16 @@
 		35240F392610518000348CA9 /* Bookkoo */ = {
 			isa = PBXGroup;
 			children = (
+				35123D262620393F00E94919 /* Search */,
 				35240F3A2610518000348CA9 /* AppDelegate.swift */,
 				35240F3C2610518000348CA9 /* SceneDelegate.swift */,
 				35240F3E2610518000348CA9 /* ArchiveViewController.swift */,
-				35240F522610606D00348CA9 /* SearchViewController.swift */,
 				35240F402610518000348CA9 /* Main.storyboard */,
 				35240F432610518100348CA9 /* Assets.xcassets */,
 				35240F452610518100348CA9 /* LaunchScreen.storyboard */,
 				35240F482610518100348CA9 /* Info.plist */,
 				35240F6226106BB700348CA9 /* APIKey.swift */,
-				35AADA0C26131481009C9B9B /* SearchTableViewCell.swift */,
-				35AADA0D26131481009C9B9B /* SearchTableViewCell.xib */,
+				35123D27262039B900E94919 /* DetailViewController.swift */,
 			);
 			path = Bookkoo;
 			sourceTree = "<group>";
@@ -102,6 +115,7 @@
 			packageProductDependencies = (
 				35240F5726106A7200348CA9 /* Alamofire */,
 				35240F5B26106AA000348CA9 /* SwiftyJSON */,
+				35123D2C26204E7E00E94919 /* SnapKit */,
 			);
 			productName = Bookkoo;
 			productReference = 35240F372610518000348CA9 /* Bookkoo.app */;
@@ -133,6 +147,7 @@
 			packageReferences = (
 				35240F5626106A7200348CA9 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				35240F5A26106AA000348CA9 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+				35123D2B26204E7E00E94919 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = 35240F382610518000348CA9 /* Products */;
 			projectDirPath = "";
@@ -168,6 +183,7 @@
 				35AADA0E26131481009C9B9B /* SearchTableViewCell.swift in Sources */,
 				35240F3D2610518000348CA9 /* SceneDelegate.swift in Sources */,
 				35240F6326106BB700348CA9 /* APIKey.swift in Sources */,
+				35123D28262039B900E94919 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -373,6 +389,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		35123D2B26204E7E00E94919 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.1;
+			};
+		};
 		35240F5626106A7200348CA9 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -392,6 +416,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		35123D2C26204E7E00E94919 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 35123D2B26204E7E00E94919 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
 		35240F5726106A7200348CA9 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 35240F5626106A7200348CA9 /* XCRemoteSwiftPackageReference "Alamofire" */;
