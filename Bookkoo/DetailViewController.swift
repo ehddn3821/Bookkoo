@@ -52,10 +52,12 @@ class DetailViewController: UIViewController {
         // 썸네일
         if let imgURL = self.imgURL {
             let url = URL(string: imgURL)
-            DispatchQueue.global().async {
-                let data = try? Data(contentsOf: url!)
-                DispatchQueue.main.async {
-                    self.bookImage.image = UIImage(data: data!)
+            if url != nil {
+                DispatchQueue.global().async {
+                    let data = try? Data(contentsOf: url!)
+                    DispatchQueue.main.async {
+                        self.bookImage.image = UIImage(data: data!)
+                    }
                 }
             }
         }
@@ -68,35 +70,40 @@ class DetailViewController: UIViewController {
         
         // 제목
         titleLabel.text = bookTitle
-        titleLabel.font = UIFont.boldSystemFont(ofSize: 21)
+        titleLabel.font = UIFont.systemFont(ofSize: 23, weight: .bold)
         titleLabel.numberOfLines = 0
         
         // 저자
         let authors = bookAuthors?.joined(separator: ", ")
         authorsLabel.text = "\(authors!) 저"
-        authorsLabel.font = UIFont.systemFont(ofSize: 15)
+        authorsLabel.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
         
         // 역자
         let translators = bookTranslators?.joined(separator: ", ")
         if translators != "" {
             translatorsLabel.text = " / \(translators!) 역"
-            translatorsLabel.font = UIFont.systemFont(ofSize: 15)
+            translatorsLabel.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
         }
         
         // 출판
         publisherLabel.text = "\(bookPublisher!) 출판"
-        publisherLabel.font = UIFont.systemFont(ofSize: 13)
+        publisherLabel.font = UIFont.systemFont(ofSize: 15)
         
         // 등록일
         let format = "yyyy-MM-dd'T'HH:mm:ss.SSS+09:00"
         let bookDate = bookDatetime?.toDateString(inputFormat: format, outputFormat: "yyyy년 MM월 dd일")!
         datetimeLabel.text = bookDate
-        datetimeLabel.font = UIFont.systemFont(ofSize: 12)
+        datetimeLabel.font = UIFont.systemFont(ofSize: 14)
         
         // 내용
         contentsLabel.text = bookContents
-        contentsLabel.font = UIFont.systemFont(ofSize: 14)
+        contentsLabel.font = UIFont.systemFont(ofSize: 17)
         contentsLabel.numberOfLines = 0
+        let attrString = NSMutableAttributedString(string: contentsLabel.text!)
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 10
+        attrString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attrString.length))
+        contentsLabel.attributedText = attrString
         
         
         // MARK: - 레이아웃
@@ -152,6 +159,7 @@ class DetailViewController: UIViewController {
     }
 }
 
+// String -> Date -> String
 extension DateFormatter {
     convenience init (format: String) {
         self.init()
@@ -159,7 +167,6 @@ extension DateFormatter {
         locale = Locale.current
     }
 }
-
 extension String {
     func toDate (format: String) -> Date? {
         return DateFormatter(format: format).date(from: self)
@@ -170,11 +177,5 @@ extension String {
             return DateFormatter(format: outputFormat).string(from: date)
         }
         return nil
-    }
-}
-
-extension Date {
-    func toString (format:String) -> String? {
-        return DateFormatter(format: format).string(from: self)
     }
 }
