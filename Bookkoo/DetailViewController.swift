@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import RealmSwift
+import Toast
 
 class DetailViewController: UIViewController {
     
@@ -26,6 +27,7 @@ class DetailViewController: UIViewController {
     let contentsLabel = UILabel()
     let likeButton = UIButton()
     let reviewTextField = UITextField()
+    let saveButton = UIButton()
     
     var imgURL: String?
     var bookTitle: String?
@@ -57,7 +59,7 @@ class DetailViewController: UIViewController {
             make.centerX.top.bottom.equalToSuperview()
         }
         
-        _ = [bookImage, titleLabel, authorsLabel, translatorsLabel, publisherLabel, datetimeLabel, contentsLabel, likeButton, reviewTextField].map { self.contentView.addSubview($0) }
+        _ = [bookImage, titleLabel, authorsLabel, translatorsLabel, publisherLabel, datetimeLabel, contentsLabel, likeButton, reviewTextField, saveButton].map { self.contentView.addSubview($0) }
         
         // 썸네일
         if let imgURL = self.imgURL {
@@ -108,10 +110,14 @@ class DetailViewController: UIViewController {
         // 좋아요
         let largeConfig = UIImage.SymbolConfiguration(pointSize: 20, weight: .bold, scale: .large)
         
-        if list[0].bkLike == false {    // 좋아요 체크
-            likeButton.setImage(UIImage(systemName: "heart", withConfiguration: largeConfig), for: .normal)
+        if list.count != 0 {
+            if list[0].bkLike == false {    // 좋아요 체크
+                likeButton.setImage(UIImage(systemName: "heart", withConfiguration: largeConfig), for: .normal)
+            } else {
+                likeButton.setImage(UIImage(systemName: "heart.fill", withConfiguration: largeConfig), for: .normal)
+            }
         } else {
-            likeButton.setImage(UIImage(systemName: "heart.fill", withConfiguration: largeConfig), for: .normal)
+            likeButton.setImage(UIImage(systemName: "heart", withConfiguration: largeConfig), for: .normal)
         }
         likeButton.tintColor = .systemPink
         
@@ -131,6 +137,20 @@ class DetailViewController: UIViewController {
         // 리뷰쓰기
         reviewTextField.placeholder = "리뷰를 작성해주세요."
         reviewTextField.borderStyle = .roundedRect
+        
+        if list.count != 0 && list[0].bkReview != nil {
+            reviewTextField.text = list[0].bkReview
+        }
+        
+        // 리뷰 저장 버튼
+        saveButton.setTitle("리뷰 저장", for: .normal)
+        saveButton.titleLabel?.font = .boldSystemFont(ofSize: 20)
+        saveButton.backgroundColor = .systemPink
+        saveButton.setTitleColor(.white, for: .normal)
+        saveButton.layer.cornerRadius = 10
+        
+        // 저장 버튼 클릭 시
+        saveButton.addTarget(self, action: #selector(saveButtonClicked), for: .touchUpInside)
         
         
         // MARK: - 레이아웃
@@ -191,9 +211,17 @@ class DetailViewController: UIViewController {
         // 리뷰쓰기
         reviewTextField.snp.makeConstraints { (make) in
             make.top.equalTo(contentsLabel.snp.bottom).offset(20)
-            make.leading.equalTo(10)
-            make.trailing.equalTo(-10)
+            make.leading.equalTo(20)
+            make.trailing.equalTo(-20)
             make.height.equalTo(120)
+        }
+        
+        // 리뷰 저장 버튼
+        saveButton.snp.makeConstraints { (make) in
+            make.top.equalTo(reviewTextField.snp.bottom).offset(20)
+            make.leading.equalTo(20)
+            make.trailing.equalTo(-20)
+            make.height.equalTo(50)
             make.bottom.equalToSuperview()
         }
     }
@@ -244,6 +272,49 @@ class DetailViewController: UIViewController {
                     list[0].bkLike = true
                 }
             }
+        }
+    }
+    
+    // 저장 버튼 클릭 시
+    @objc func saveButtonClicked() {
+        
+        if reviewTextField.text != "" {
+        
+            // 선택한 책에 대해 첫 리뷰일 시
+            if list.count == 0 {
+                
+                let authors = bookAuthors?.joined(separator: ", ")
+                let translators = bookTranslators?.joined(separator: ", ")
+                
+                let likeBook = BookModel(value: [
+                    "id": BookModel().autoIncrementId(),
+                    "bkTitle": bookTitle!,
+                    "bkAuthors": authors!,
+                    "bkTranslators": translators ?? "",
+                    "bkPublisher": bookPublisher!,
+                    "bkContents": bookContents!,
+                    "bkThumbnail": imgURL!,
+                    "bkDatetime": bookDatetime!,
+                    "bkISBN": bookISBN!,
+                    "bkReview": reviewTextField.text!
+                ])
+                
+                try! realm.write {
+                    realm.add(likeBook)
+                }
+                
+                self.view.makeToast("리뷰 저장이 완료되었습니다.", duration: 1.0, position: .center)
+                
+            // 리뷰 수정
+            } else {
+                try! realm.write {
+                    list[0].bkReview = reviewTextField.text
+                }
+                
+                self.view.makeToast("리뷰 저장이 완료되었습니다.", duration: 1.0, position: .center)
+            }
+        } else {
+            self.view.makeToast("리뷰를 입력해주세요.", duration: 1.0, position: .center)
         }
     }
 }
