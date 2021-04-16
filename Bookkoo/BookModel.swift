@@ -9,14 +9,17 @@ import Foundation
 import RealmSwift
 
 class BookModel: Object {
-    @objc dynamic var id: Int = 0  // PK
-    @objc dynamic var bkTitle: String = ""
-    let bkAuthors = List<String>()
-    let bkTranslators = List<String>()
-    @objc dynamic var bkPublisher: String = ""
-    @objc dynamic var bkContents: String = ""
-    @objc dynamic var bkThumbnail: String = ""
-    @objc dynamic var bkDatetime: String = ""
+    @objc dynamic var id = 0  // PK
+    @objc dynamic var bkTitle = ""
+    @objc dynamic var bkAuthors = ""
+    @objc dynamic var bkTranslators: String? = nil
+    @objc dynamic var bkPublisher = ""
+    @objc dynamic var bkContents = ""
+    @objc dynamic var bkThumbnail = ""
+    @objc dynamic var bkDatetime = ""
+    @objc dynamic var bkLike = false
+    @objc dynamic var bkReview: String? = nil
+    @objc dynamic var bkISBN = ""
     
     override static func primaryKey() -> String? {
         return "id"

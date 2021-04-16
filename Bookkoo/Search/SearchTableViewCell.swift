@@ -14,7 +14,7 @@ class SearchTableViewCell: UITableViewCell {
     @IBOutlet var bookAuthor: UILabel!
     @IBOutlet var bookTranslator: UILabel!
     @IBOutlet var translatorLabel: UILabel!
-        
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         

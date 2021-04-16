@@ -7,8 +7,12 @@
 
 import UIKit
 import SnapKit
+import RealmSwift
 
 class DetailViewController: UIViewController {
+    
+    let realm = try! Realm()
+    var list: Results<BookModel>!
     
     let scrollView = UIScrollView()
     let contentView = UIView()
@@ -20,6 +24,8 @@ class DetailViewController: UIViewController {
     let publisherLabel = UILabel()
     let datetimeLabel = UILabel()
     let contentsLabel = UILabel()
+    let likeButton = UIButton()
+    let reviewTextField = UITextField()
     
     var imgURL: String?
     var bookTitle: String?
@@ -28,11 +34,15 @@ class DetailViewController: UIViewController {
     var bookPublisher: String?
     var bookDatetime: String?
     var bookContents: String?
+    var bookISBN: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = UIColor(named: "BgGray")
+        
+        // Realm
+        list = realm.objects(BookModel.self).filter("bkISBN == '\(bookISBN!)'")
 
         // 스크롤뷰
         self.view.addSubview(scrollView)
@@ -47,7 +57,7 @@ class DetailViewController: UIViewController {
             make.centerX.top.bottom.equalToSuperview()
         }
         
-        _ = [bookImage, titleLabel, authorsLabel, translatorsLabel, publisherLabel, datetimeLabel, contentsLabel].map { self.contentView.addSubview($0) }
+        _ = [bookImage, titleLabel, authorsLabel, translatorsLabel, publisherLabel, datetimeLabel, contentsLabel, likeButton, reviewTextField].map { self.contentView.addSubview($0) }
         
         // 썸네일
         if let imgURL = self.imgURL {
@@ -95,6 +105,19 @@ class DetailViewController: UIViewController {
         datetimeLabel.text = bookDate
         datetimeLabel.font = UIFont.systemFont(ofSize: 14)
         
+        // 좋아요
+        let largeConfig = UIImage.SymbolConfiguration(pointSize: 20, weight: .bold, scale: .large)
+        
+        if list[0].bkLike == false {    // 좋아요 체크
+            likeButton.setImage(UIImage(systemName: "heart", withConfiguration: largeConfig), for: .normal)
+        } else {
+            likeButton.setImage(UIImage(systemName: "heart.fill", withConfiguration: largeConfig), for: .normal)
+        }
+        likeButton.tintColor = .systemPink
+        
+        // 좋아요 버튼 클릭 시
+        likeButton.addTarget(self, action: #selector(likeButtonClicked), for: .touchUpInside)
+        
         // 내용
         contentsLabel.text = bookContents
         contentsLabel.font = UIFont.systemFont(ofSize: 17)
@@ -104,6 +127,10 @@ class DetailViewController: UIViewController {
         paragraphStyle.lineSpacing = 10
         attrString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attrString.length))
         contentsLabel.attributedText = attrString
+        
+        // 리뷰쓰기
+        reviewTextField.placeholder = "리뷰를 작성해주세요."
+        reviewTextField.borderStyle = .roundedRect
         
         
         // MARK: - 레이아웃
@@ -139,14 +166,19 @@ class DetailViewController: UIViewController {
         publisherLabel.snp.makeConstraints { (make) in
             make.top.equalTo(authorsLabel.snp.bottom).offset(20)
             make.leading.equalTo(20)
-            make.trailing.equalTo(-20)
         }
         
         // 등록일
         datetimeLabel.snp.makeConstraints { (make) in
             make.top.equalTo(publisherLabel.snp.bottom).offset(8)
             make.leading.equalTo(20)
+        }
+        
+        // 좋아요
+        likeButton.snp.makeConstraints { (make) in
+            make.top.equalTo(publisherLabel.snp.top)
             make.trailing.equalTo(-20)
+            make.width.height.equalTo(50)
         }
         
         // 내용
@@ -154,7 +186,64 @@ class DetailViewController: UIViewController {
             make.top.equalTo(datetimeLabel.snp.bottom).offset(30)
             make.leading.equalTo(20)
             make.trailing.equalTo(-20)
+        }
+        
+        // 리뷰쓰기
+        reviewTextField.snp.makeConstraints { (make) in
+            make.top.equalTo(contentsLabel.snp.bottom).offset(20)
+            make.leading.equalTo(10)
+            make.trailing.equalTo(-10)
+            make.height.equalTo(120)
             make.bottom.equalToSuperview()
+        }
+    }
+    
+    // 좋아요 버튼 클릭 시
+    @objc func likeButtonClicked() {
+        
+        // 렘안에 없을 때
+        if list.count == 0 {
+            
+            let largeConfig = UIImage.SymbolConfiguration(pointSize: 20, weight: .bold, scale: .large)
+            likeButton.setImage(UIImage(systemName: "heart.fill", withConfiguration: largeConfig), for: .normal)
+            
+            let authors = bookAuthors?.joined(separator: ", ")
+            let translators = bookTranslators?.joined(separator: ", ")
+            
+            let likeBook = BookModel(value: [
+                "id": BookModel().autoIncrementId(),
+                "bkTitle": bookTitle!,
+                "bkAuthors": authors!,
+                "bkTranslators": translators ?? "",
+                "bkPublisher": bookPublisher!,
+                "bkContents": bookContents!,
+                "bkThumbnail": imgURL!,
+                "bkDatetime": bookDatetime!,
+                "bkLike": true,
+                "bkISBN": bookISBN!
+            ])
+            
+            try! realm.write {
+                realm.add(likeBook)
+            }
+            
+        // 렘 안에 이미 있을 때
+        } else {
+            if list[0].bkLike == true {
+                let largeConfig = UIImage.SymbolConfiguration(pointSize: 20, weight: .bold, scale: .large)
+                likeButton.setImage(UIImage(systemName: "heart", withConfiguration: largeConfig), for: .normal)
+                
+                try! realm.write {
+                    list[0].bkLike = false
+                }
+            } else {
+                let largeConfig = UIImage.SymbolConfiguration(pointSize: 20, weight: .bold, scale: .large)
+                likeButton.setImage(UIImage(systemName: "heart.fill", withConfiguration: largeConfig), for: .normal)
+                
+                try! realm.write {
+                    list[0].bkLike = true
+                }
+            }
         }
     }
 }
@@ -167,6 +256,7 @@ extension DateFormatter {
         locale = Locale.current
     }
 }
+
 extension String {
     func toDate (format: String) -> Date? {
         return DateFormatter(format: format).date(from: self)

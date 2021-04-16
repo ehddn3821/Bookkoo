@@ -86,6 +86,7 @@ struct APIResponse: Codable {
         let publisher: String // 출판사
         let datetime: String // 등록일
         let translators: [String]? // 역자
+        let isbn: String // ISBN
     }
 }
 
@@ -170,6 +171,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
                 vc?.bookPublisher = bookArray[index].publisher
                 vc?.bookDatetime = bookArray[index].datetime
                 vc?.bookContents = bookArray[index].contents
+                vc?.bookISBN = bookArray[index].isbn
             }
         }
     }
