@@ -155,19 +155,22 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: false)
         
         // 선택한 indexPath.row 넘기기
-        performSegue(withIdentifier: "goDetail", sender: indexPath.row)
+        performSegue(withIdentifier: "goDetail2", sender: indexPath.row)
     }
     
     // 세그가 작동하기전에 먼저 실행
     // 선택한 셀 데이터 넘겨주기
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "goDetail" {
+        if segue.identifier == "goDetail2" {
             let vc = segue.destination as? DetailViewController
+            
             if let index = sender as? Int {
                 vc?.imgURL = bookArray[index].thumbnail
                 vc?.bookTitle = bookArray[index].title
-                vc?.bookAuthors = bookArray[index].authors
-                vc?.bookTranslators = bookArray[index].translators
+                let authors = bookArray[index].authors.joined(separator: ", ")
+                vc?.bookAuthors = authors
+                let translators = bookArray[index].translators?.joined(separator: ", ")
+                vc?.bookTranslators = translators
                 vc?.bookPublisher = bookArray[index].publisher
                 vc?.bookDatetime = bookArray[index].datetime
                 vc?.bookContents = bookArray[index].contents

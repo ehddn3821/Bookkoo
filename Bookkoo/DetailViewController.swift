@@ -31,8 +31,8 @@ class DetailViewController: UIViewController {
     
     var imgURL: String?
     var bookTitle: String?
-    var bookAuthors: [String]?
-    var bookTranslators: [String]?
+    var bookAuthors: String?
+    var bookTranslators: String?
     var bookPublisher: String?
     var bookDatetime: String?
     var bookContents: String?
@@ -86,14 +86,12 @@ class DetailViewController: UIViewController {
         titleLabel.numberOfLines = 0
         
         // 저자
-        let authors = bookAuthors?.joined(separator: ", ")
-        authorsLabel.text = "\(authors!) 저"
+        authorsLabel.text = "\(bookAuthors!) 저"
         authorsLabel.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
         
         // 역자
-        let translators = bookTranslators?.joined(separator: ", ")
-        if translators != "" {
-            translatorsLabel.text = " / \(translators!) 역"
+        if bookTranslators != "" {
+            translatorsLabel.text = " / \(bookTranslators!) 역"
             translatorsLabel.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
         }
         
@@ -235,14 +233,11 @@ class DetailViewController: UIViewController {
             let largeConfig = UIImage.SymbolConfiguration(pointSize: 20, weight: .bold, scale: .large)
             likeButton.setImage(UIImage(systemName: "heart.fill", withConfiguration: largeConfig), for: .normal)
             
-            let authors = bookAuthors?.joined(separator: ", ")
-            let translators = bookTranslators?.joined(separator: ", ")
-            
             let likeBook = BookModel(value: [
                 "id": BookModel().autoIncrementId(),
                 "bkTitle": bookTitle!,
-                "bkAuthors": authors!,
-                "bkTranslators": translators ?? "",
+                "bkAuthors": bookAuthors!,
+                "bkTranslators": bookTranslators ?? "",
                 "bkPublisher": bookPublisher!,
                 "bkContents": bookContents!,
                 "bkThumbnail": imgURL!,
@@ -283,14 +278,11 @@ class DetailViewController: UIViewController {
             // 선택한 책에 대해 첫 리뷰일 시
             if list.count == 0 {
                 
-                let authors = bookAuthors?.joined(separator: ", ")
-                let translators = bookTranslators?.joined(separator: ", ")
-                
                 let likeBook = BookModel(value: [
                     "id": BookModel().autoIncrementId(),
                     "bkTitle": bookTitle!,
-                    "bkAuthors": authors!,
-                    "bkTranslators": translators ?? "",
+                    "bkAuthors": bookAuthors!,
+                    "bkTranslators": bookTranslators ?? "",
                     "bkPublisher": bookPublisher!,
                     "bkContents": bookContents!,
                     "bkThumbnail": imgURL!,

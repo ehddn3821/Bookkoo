@@ -79,6 +79,33 @@ extension ArchiveViewController: UITableViewDelegate, UITableViewDataSource {
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        // 선택 해제하기
+        tableView.deselectRow(at: indexPath, animated: false)
+        
+        // 선택한 indexPath.row 넘기기
+        performSegue(withIdentifier: "goDetail1", sender: indexPath.row)
+    }
+    
+    // 세그가 작동하기전에 먼저 실행
+    // 선택한 셀 데이터 넘겨주기
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goDetail1" {
+            let vc = segue.destination as? DetailViewController
+            if let index = sender as? Int {
+                vc?.imgURL = likeList[index].bkThumbnail
+                vc?.bookTitle = likeList[index].bkTitle
+                vc?.bookAuthors = likeList[index].bkAuthors
+                vc?.bookTranslators = likeList[index].bkTranslators
+                vc?.bookPublisher = likeList[index].bkPublisher
+                vc?.bookDatetime = likeList[index].bkDatetime
+                vc?.bookContents = likeList[index].bkContents
+                vc?.bookISBN = likeList[index].bkISBN
+            }
+        }
+    }
 }
 
 // 테두리 원하는 방향만

@@ -35,7 +35,7 @@
                     <navigationItem key="navigationItem" title="Search" id="rEL-Jt-YCw"/>
                     <connections>
                         <outlet property="searchTableView" destination="cR9-AH-m0R" id="5sM-Hs-nSU"/>
-                        <segue destination="Rth-FD-YaY" kind="showDetail" identifier="goDetail" id="IJD-vd-QWX"/>
+                        <segue destination="Rth-FD-YaY" kind="showDetail" identifier="goDetail2" id="IJD-vd-QWX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wHl-CP-1to" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -55,7 +55,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mdx-HZ-7Da" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="146" y="2205"/>
+            <point key="canvasLocation" x="-245" y="2243"/>
         </scene>
         <!--Archive-->
         <scene sceneID="tne-QT-ifu">
@@ -116,7 +116,7 @@
                                     <constraint firstAttribute="height" constant="130" id="osg-Kf-fOP"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2mf-m4-MVU">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2mf-m4-MVU">
                                 <rect key="frame" x="0.0" y="336" width="414" height="477"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
@@ -151,6 +151,7 @@
                         <outlet property="likeCountLabel" destination="XZu-Q2-eBt" id="ugh-Oa-t76"/>
                         <outlet property="reviewCountLabel" destination="ebp-qC-09k" id="h3n-fE-L8T"/>
                         <outlet property="titleLabel" destination="f7D-RS-h2e" id="a8U-nE-jkX"/>
+                        <segue destination="Rth-FD-YaY" kind="showDetail" identifier="goDetail1" id="ghF-Ow-xSX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -233,6 +234,9 @@
             <point key="canvasLocation" x="144.92753623188406" y="809.59821428571422"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="ghF-Ow-xSX"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="book.circle.fill" catalog="system" width="128" height="121"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
