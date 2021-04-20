@@ -71,34 +71,17 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="iAi-cd-iAF">
                                         <rect key="frame" x="30" y="36" width="354" height="58"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="OzH-yp-pE5">
-                                                <rect key="frame" x="0.0" y="0.0" width="112.5" height="58"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="읽은 책" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="872-o1-YN6">
-                                                        <rect key="frame" x="32" y="0.0" width="48.5" height="20.5"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Im-ar-o0E">
-                                                        <rect key="frame" x="48" y="25.5" width="17" height="32.5"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="27"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                            </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="2g6-6D-H69">
-                                                <rect key="frame" x="120.5" y="0.0" width="113" height="58"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="173" height="58"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="남긴 후기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JFx-Ra-7sp">
-                                                        <rect key="frame" x="25" y="0.0" width="63.5" height="20.5"/>
+                                                        <rect key="frame" x="55" y="0.0" width="63.5" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ebp-qC-09k">
-                                                        <rect key="frame" x="48" y="25.5" width="17" height="32.5"/>
+                                                        <rect key="frame" x="78" y="25.5" width="17" height="32.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -106,16 +89,16 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="hYX-sr-rNZ">
-                                                <rect key="frame" x="241.5" y="0.0" width="112.5" height="58"/>
+                                                <rect key="frame" x="181" y="0.0" width="173" height="58"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="찜한 책" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mPR-Ut-VSc">
-                                                        <rect key="frame" x="32" y="0.0" width="48.5" height="20.5"/>
+                                                        <rect key="frame" x="62.5" y="0.0" width="48.5" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XZu-Q2-eBt">
-                                                        <rect key="frame" x="47.5" y="25.5" width="17" height="32.5"/>
+                                                        <rect key="frame" x="78" y="25.5" width="17" height="32.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -133,19 +116,31 @@
                                     <constraint firstAttribute="height" constant="130" id="osg-Kf-fOP"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2mf-m4-MVU">
-                                <rect key="frame" x="0.0" y="270" width="414" height="543"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2mf-m4-MVU">
+                                <rect key="frame" x="0.0" y="336" width="414" height="477"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="📕 찜한 책" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f7D-RS-h2e">
+                                <rect key="frame" x="20" y="278" width="374" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Yel-VU-Hyb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="2mf-m4-MVU" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="DLa-qf-UJo"/>
+                            <constraint firstItem="2mf-m4-MVU" firstAttribute="top" secondItem="f7D-RS-h2e" secondAttribute="bottom" constant="8" id="J7P-se-Bnd"/>
                             <constraint firstItem="2mf-m4-MVU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Mcp-Fu-306"/>
                             <constraint firstItem="01c-sN-hrR" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Ms6-pR-K1h"/>
-                            <constraint firstItem="2mf-m4-MVU" firstAttribute="top" secondItem="01c-sN-hrR" secondAttribute="bottom" id="MtZ-D6-Tcu"/>
+                            <constraint firstItem="f7D-RS-h2e" firstAttribute="top" secondItem="01c-sN-hrR" secondAttribute="bottom" constant="8" symbolic="YES" id="R8O-ym-nNM"/>
                             <constraint firstItem="01c-sN-hrR" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="XHC-qp-kVx"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="f7D-RS-h2e" secondAttribute="trailing" constant="20" id="XUj-jI-hgl"/>
+                            <constraint firstItem="f7D-RS-h2e" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="fqC-Wf-zKX"/>
                             <constraint firstItem="01c-sN-hrR" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="nes-1x-CSq"/>
                             <constraint firstItem="2mf-m4-MVU" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="pVL-FE-k0W"/>
                         </constraints>
@@ -153,9 +148,9 @@
                     <navigationItem key="navigationItem" title="Archive" id="Bcv-fx-GYM"/>
                     <connections>
                         <outlet property="archiveTableView" destination="2mf-m4-MVU" id="ZLT-qZ-ywq"/>
-                        <outlet property="readCountLabel" destination="1Im-ar-o0E" id="X03-Vs-dm2"/>
-                        <outlet property="reserveCountLabel" destination="XZu-Q2-eBt" id="ugh-Oa-t76"/>
+                        <outlet property="likeCountLabel" destination="XZu-Q2-eBt" id="ugh-Oa-t76"/>
                         <outlet property="reviewCountLabel" destination="ebp-qC-09k" id="h3n-fE-L8T"/>
+                        <outlet property="titleLabel" destination="f7D-RS-h2e" id="a8U-nE-jkX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
