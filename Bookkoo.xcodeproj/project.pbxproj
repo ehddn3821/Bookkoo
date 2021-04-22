@@ -90,10 +90,10 @@
 		35240F392610518000348CA9 /* Bookkoo */ = {
 			isa = PBXGroup;
 			children = (
+				35240F3E2610518000348CA9 /* ArchiveViewController.swift */,
 				35123D262620393F00E94919 /* Search */,
 				35240F3A2610518000348CA9 /* AppDelegate.swift */,
 				35240F3C2610518000348CA9 /* SceneDelegate.swift */,
-				35240F3E2610518000348CA9 /* ArchiveViewController.swift */,
 				35240F402610518000348CA9 /* Main.storyboard */,
 				35240F432610518100348CA9 /* Assets.xcassets */,
 				35240F452610518100348CA9 /* LaunchScreen.storyboard */,

@@ -220,7 +220,7 @@ class DetailViewController: UIViewController {
             make.leading.equalTo(20)
             make.trailing.equalTo(-20)
             make.height.equalTo(50)
-            make.bottom.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-20)
         }
     }
     

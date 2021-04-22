@@ -74,8 +74,8 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="2g6-6D-H69">
                                                 <rect key="frame" x="0.0" y="0.0" width="173" height="58"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="남긴 후기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JFx-Ra-7sp">
-                                                        <rect key="frame" x="55" y="0.0" width="63.5" height="20.5"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="리뷰" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JFx-Ra-7sp">
+                                                        <rect key="frame" x="72" y="0.0" width="29.5" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -97,7 +97,7 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XZu-Q2-eBt">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XZu-Q2-eBt">
                                                         <rect key="frame" x="78" y="25.5" width="17" height="32.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                                         <nil key="textColor"/>
@@ -107,12 +107,36 @@
                                             </stackView>
                                         </subviews>
                                     </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="psS-YI-ddd">
+                                        <rect key="frame" x="274" y="36" width="49" height="58"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="psS-YI-ddd" secondAttribute="height" multiplier="49:58" id="883-lj-v6B"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="changeLike:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DsV-gs-Lz0"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eda-EK-eGA">
+                                        <rect key="frame" x="87" y="36.5" width="60" height="57"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="eda-EK-eGA" secondAttribute="height" multiplier="20:19" id="aj0-9z-mqG"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="changeReview:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zLm-c4-dLv"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="iAi-cd-iAF" firstAttribute="centerY" secondItem="01c-sN-hrR" secondAttribute="centerY" id="0I3-Uj-jKE"/>
+                                    <constraint firstItem="psS-YI-ddd" firstAttribute="leading" secondItem="hYX-sr-rNZ" secondAttribute="trailing" constant="-110" id="9aB-HT-IlV"/>
+                                    <constraint firstItem="eda-EK-eGA" firstAttribute="height" secondItem="2g6-6D-H69" secondAttribute="height" multiplier="0.982759" id="ADA-A9-dXG"/>
                                     <constraint firstAttribute="trailing" secondItem="iAi-cd-iAF" secondAttribute="trailing" constant="30" id="K7V-BC-npk"/>
+                                    <constraint firstItem="psS-YI-ddd" firstAttribute="height" secondItem="hYX-sr-rNZ" secondAttribute="height" id="UaY-Tq-0QI"/>
+                                    <constraint firstItem="eda-EK-eGA" firstAttribute="centerY" secondItem="2g6-6D-H69" secondAttribute="centerY" id="b24-m0-ddd"/>
                                     <constraint firstItem="iAi-cd-iAF" firstAttribute="leading" secondItem="01c-sN-hrR" secondAttribute="leading" constant="30" id="cTx-hx-WUi"/>
+                                    <constraint firstItem="psS-YI-ddd" firstAttribute="centerY" secondItem="hYX-sr-rNZ" secondAttribute="centerY" id="hfP-Lm-hfO"/>
+                                    <constraint firstItem="eda-EK-eGA" firstAttribute="leading" secondItem="2g6-6D-H69" secondAttribute="trailing" constant="-116" id="m5S-cJ-vGM"/>
                                     <constraint firstAttribute="height" constant="130" id="osg-Kf-fOP"/>
                                 </constraints>
                             </view>
@@ -158,22 +182,6 @@
             </objects>
             <point key="canvasLocation" x="-623.1884057971015" y="1506.6964285714284"/>
         </scene>
-        <!--Item-->
-        <scene sceneID="vOS-1K-Vvv">
-            <objects>
-                <viewController id="4vE-gt-GtT" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="MkX-QO-Pys">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="u96-Np-sMR"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="wRr-eF-nlT"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Kl1-f4-igo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="910" y="810"/>
-        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="9yB-xn-pwK">
             <objects>
@@ -188,7 +196,6 @@
                     <connections>
                         <segue destination="JWK-Bt-wTO" kind="relationship" relationship="viewControllers" id="hL7-k2-X5H"/>
                         <segue destination="lzx-sd-YXe" kind="relationship" relationship="viewControllers" id="Hae-hz-B51"/>
-                        <segue destination="4vE-gt-GtT" kind="relationship" relationship="viewControllers" id="8QA-AB-5jM"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dQR-E9-xhl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

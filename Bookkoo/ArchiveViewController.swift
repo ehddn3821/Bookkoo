@@ -13,6 +13,7 @@ class ArchiveViewController: UIViewController {
     let realm = try! Realm()
     var reviewList: Results<BookModel>!
     var likeList: Results<BookModel>!
+    var changeValue = 0
 
     @IBOutlet var archiveTableView: UITableView!
     @IBOutlet var reviewCountLabel: UILabel!
@@ -45,35 +46,74 @@ class ArchiveViewController: UIViewController {
         
         archiveTableView.reloadData()
     }
+    
+    @IBAction func changeReview(_ sender: UIButton) {
+        changeValue = 1
+        titleLabel.text = "📝 리뷰를 남긴 책"
+        archiveTableView.reloadData()
+    }
+    @IBAction func changeLike(_ sender: UIButton) {
+        changeValue = 0
+        titleLabel.text = "📕 찜한 책"
+        archiveTableView.reloadData()
+    }
 }
 
 extension ArchiveViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return likeList.count
+        
+        if changeValue == 0 {
+            return likeList.count
+        } else {
+            return reviewList.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SearchTableViewCell", for: indexPath) as! SearchTableViewCell
         
-        cell.bookAuthor.text = likeList[indexPath.row].bkAuthors
-        
-        cell.bookTitle.text = likeList[indexPath.row].bkTitle
-        
-        if likeList[indexPath.row].bkTranslators != "" {
-            cell.translatorLabel.isHidden = false
-            cell.bookTranslator.isHidden = false
-            cell.bookTranslator.text = likeList[indexPath.row].bkTranslators
+        // 찜한 책
+        if changeValue == 0 {
+            cell.bookAuthor.text = likeList[indexPath.row].bkAuthors
+            cell.bookTitle.text = likeList[indexPath.row].bkTitle
+            
+            if likeList[indexPath.row].bkTranslators != "" {
+                cell.translatorLabel.isHidden = false
+                cell.bookTranslator.isHidden = false
+                cell.bookTranslator.text = likeList[indexPath.row].bkTranslators
+            } else {
+                cell.translatorLabel.isHidden = true
+                cell.bookTranslator.isHidden = true
+            }
+            
+            let url = URL(string: likeList[indexPath.row].bkThumbnail)
+            DispatchQueue.global().async {
+                let data = try? Data(contentsOf: url!)
+                DispatchQueue.main.async {
+                    cell.bookImage.image = UIImage(data: data!)
+                }
+            }
+        // 남긴 후기
         } else {
-            cell.translatorLabel.isHidden = true
-            cell.bookTranslator.isHidden = true
-        }
-        
-        let url = URL(string: likeList[indexPath.row].bkThumbnail)
-        DispatchQueue.global().async {
-            let data = try? Data(contentsOf: url!)
-            DispatchQueue.main.async {
-                cell.bookImage.image = UIImage(data: data!)
+            cell.bookAuthor.text = reviewList[indexPath.row].bkAuthors
+            cell.bookTitle.text = reviewList[indexPath.row].bkTitle
+            
+            if reviewList[indexPath.row].bkTranslators != "" {
+                cell.translatorLabel.isHidden = false
+                cell.bookTranslator.isHidden = false
+                cell.bookTranslator.text = reviewList[indexPath.row].bkTranslators
+            } else {
+                cell.translatorLabel.isHidden = true
+                cell.bookTranslator.isHidden = true
+            }
+            
+            let url = URL(string: reviewList[indexPath.row].bkThumbnail)
+            DispatchQueue.global().async {
+                let data = try? Data(contentsOf: url!)
+                DispatchQueue.main.async {
+                    cell.bookImage.image = UIImage(data: data!)
+                }
             }
         }
         
@@ -94,15 +134,29 @@ extension ArchiveViewController: UITableViewDelegate, UITableViewDataSource {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goDetail1" {
             let vc = segue.destination as? DetailViewController
-            if let index = sender as? Int {
-                vc?.imgURL = likeList[index].bkThumbnail
-                vc?.bookTitle = likeList[index].bkTitle
-                vc?.bookAuthors = likeList[index].bkAuthors
-                vc?.bookTranslators = likeList[index].bkTranslators
-                vc?.bookPublisher = likeList[index].bkPublisher
-                vc?.bookDatetime = likeList[index].bkDatetime
-                vc?.bookContents = likeList[index].bkContents
-                vc?.bookISBN = likeList[index].bkISBN
+            
+            if changeValue == 0 {
+                if let index = sender as? Int {
+                    vc?.imgURL = likeList[index].bkThumbnail
+                    vc?.bookTitle = likeList[index].bkTitle
+                    vc?.bookAuthors = likeList[index].bkAuthors
+                    vc?.bookTranslators = likeList[index].bkTranslators
+                    vc?.bookPublisher = likeList[index].bkPublisher
+                    vc?.bookDatetime = likeList[index].bkDatetime
+                    vc?.bookContents = likeList[index].bkContents
+                    vc?.bookISBN = likeList[index].bkISBN
+                }
+            } else {
+                if let index = sender as? Int {
+                    vc?.imgURL = reviewList[index].bkThumbnail
+                    vc?.bookTitle = reviewList[index].bkTitle
+                    vc?.bookAuthors = reviewList[index].bkAuthors
+                    vc?.bookTranslators = reviewList[index].bkTranslators
+                    vc?.bookPublisher = reviewList[index].bkPublisher
+                    vc?.bookDatetime = reviewList[index].bkDatetime
+                    vc?.bookContents = reviewList[index].bkContents
+                    vc?.bookISBN = reviewList[index].bkISBN
+                }
             }
         }
     }
@@ -129,7 +183,7 @@ extension CALayer {
             default:
                 break
             }
-            border.backgroundColor = color.cgColor;
+            border.backgroundColor = color.cgColor
             self.addSublayer(border)
         }
     }
